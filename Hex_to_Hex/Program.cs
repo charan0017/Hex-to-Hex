@@ -14,6 +14,7 @@
         static void Main(string[] args)
         {
             bool isFirstTime = true;
+
             /// <summary>
             /// Title
             /// </summary>
@@ -32,7 +33,7 @@
             /// This is Initiation for taking Input Hex String.
             /// </summary>
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[H2H]    Note: This converter Limits your input Hex Bytes to 254 Characters at each time.", Console.ForegroundColor);
+            Console.WriteLine("[H2H]    Note: This converter Limits your Input Hex-Bytes to 254 Characters at each time.", Console.ForegroundColor);
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
 

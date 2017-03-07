@@ -15,11 +15,11 @@
             /// This is Initiation for taking Input Hex String.
             /// </summary>
             if (isFirstTime)
-                Console.Write("[H2H]    Please Enter your input Hex Bytes: ");
+                Console.Write("[H2H]    Please Enter your input Hex-Bytes: ");
             else
             {
                 Console.WriteLine();
-                Console.Write("[H2H]    Now Enter the remaining Hex-Code: ");
+                Console.Write("[H2H]    Now Enter the remaining Hex-Bytes: ");
             }
             string inputString = Console.ReadLine() + ", ";
             int i = 0;
