@@ -1,17 +1,23 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-
-namespace Hex_to_Hex
+﻿namespace Hex_to_Hex
 {
+    #region Usings
+
+    using System;
+    using System.Threading;
+
+    #endregion Usings
+
     class Program
     {
+        public HexEditor _HexEditor = null;
+
         static void Main(string[] args)
         {
+            bool isFirstTime = true;
             /// <summary>
             /// Title
             /// </summary>
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(@"
              .__   ___                       .__                .__   ___                   
              |  | |   |                      |  |___            |  | |   |                  
@@ -25,46 +31,60 @@ namespace Hex_to_Hex
             /// <summary>
             /// This is Initiation for taking Input Hex String.
             /// </summary>
-            int i = 0;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("[H2H]    Note: This converter Limits your input Hex Bytes to 254 Characters Only", Console.ForegroundColor);
+            Console.WriteLine("[H2H]    Note: This converter Limits your input Hex Bytes to 254 Characters at each time.", Console.ForegroundColor);
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("[H2H]    Please Enter your input Hex Bytes: ");
-            string inputString = Console.ReadLine() + ", ";
 
             /// <summary>
-            /// This is method to remove '0x' and ','. For Ex: i/p: 0x2F, 0x46 -> o/p: 2F46
+            /// This will Start your program.
             /// </summary>
-            while (i<inputString.Length)
+            HexEditor _HexEditor    = new HexEditor(isFirstTime);
+            isFirstTime  = false;
+
+            /// <summary>
+            /// This method will Switch your opinion.
+            /// </summary>
+            Console.WriteLine();
+            Console.Write("[H2H]    Do you want to add more Hex-Bytes to the Existing queue? (Y/N)");
+            ConsoleKeyInfo _Command = Console.ReadKey(false);
+            while (_Command.Key != ConsoleKey.N)
             {
-                if(inputString[i] == '0')
-                    if(inputString[i+1] == 'x')
-                        if(inputString[i+4] == ',')
+                switch (_Command.Key)
+                {
+                    case ConsoleKey.Y:
                         {
-                            inputString = inputString.Remove(i, 2);
-                            inputString = inputString.Remove(i + 2, 2);
+                            Console.WriteLine();
+                            _HexEditor = new HexEditor(isFirstTime);
+                            Console.WriteLine("[H2H]    Successfully added the new Hex-Bytes to the previous queue.");
+                            Console.WriteLine();
+                            break;
                         }
-                ++i;
+                    case ConsoleKey.N:
+                        {
+                            Console.WriteLine();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Unknown command parsed, try again.");
+                            Console.WriteLine();
+                            break;
+                        }
+                }
+
+                Console.Write("[H2H]    Do you want to add more Hex-Bytes to the Existing queue? (Y/N)");
+                _Command = Console.ReadKey(false);
             }
 
             /// <summary>
-            /// Verifying for Output file existence
+            /// Now Exiting Application
             /// </summary>
-            if (File.Exists(@"Output.txt"))
-                File.Delete(@"Output.txt");
-
-            /// <summary>
-            /// Writing the Output
-            /// </summary>
-            using (StreamWriter sw = new StreamWriter(@"Output.txt"))
-            {
-                sw.WriteLine(inputString);
-            }
-
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("[H2H]    The Output was successfully written.");
             Console.WriteLine("[H2H]    Now Exiting Application...");
-            Thread.Sleep(7000);
+            Thread.Sleep(4000);
             Environment.Exit(0);
         }
     }
