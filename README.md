@@ -4,9 +4,9 @@ A Simple Light Weight Hex to Hex Editor
 # Usage
 For Example:
 
-If the Input Hex-Code is: 0x00, 0x00, 0x7F, 0x00, 0x00, 0x7F, 0x00, 0x00, 0x7F
+If the Input Hex-Bytes is: 0x00, 0x00, 0x7F, 0x00, 0x00, 0x7F, 0x00, 0x00, 0x7F
 
-Then the Output Hex-Code will be: 00007F00007F00007F
+Then the Output Hex-Bytes will be: 00007F00007F00007F
 
 Note: The Output will always be written in Output.txt file.
 
