@@ -18,6 +18,7 @@
             /// <summary>
             /// Title
             /// </summary>
+            Console.Title = "H2H - Hex to Hex Editor | Copyright ©  2017";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(@"
              .__   ___                       .__                .__   ___                   
@@ -85,7 +86,7 @@
             Console.WriteLine();
             Console.WriteLine("[H2H]    The Output was successfully written.");
             Console.WriteLine("[H2H]    Now Exiting Application...");
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
             Environment.Exit(0);
         }
     }

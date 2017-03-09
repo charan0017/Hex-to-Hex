@@ -22,22 +22,12 @@
                 Console.Write("[H2H]    Now Enter the remaining Hex-Bytes: ");
             }
             string inputString = Console.ReadLine() + ", ";
-            int i = 0;
 
             /// <summary>
             /// This is method to remove '0x' and ','. For Ex: i/p: 0x2F, 0x46 -> o/p: 2F46
             /// </summary>
-            while (i < inputString.Length)
-            {
-                if (inputString[i] == '0')
-                    if (inputString[i + 1] == 'x')
-                        if (inputString[i + 4] == ',')
-                        {
-                            inputString = inputString.Remove(i, 2);
-                            inputString = inputString.Remove(i + 2, 2);
-                        }
-                ++i;
-            }
+            inputString = inputString.Replace("0x","");
+            inputString = inputString.Replace(", ", "");
 
             /// <summary>
             /// Verifying for Output file existence
